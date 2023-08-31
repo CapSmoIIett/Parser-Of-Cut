@@ -8,27 +8,34 @@ character_map = {
  ord('\r') : None
 }
 
+
+def text_preparation(text):
+    # remove character_map  symbols
+    text.translate(character_map)
+
+    # remove unnesesery spaces
+    text.strip()
+
+    # remove punctuation symbols
+    text.translate(string.punctuation)
+
+
+
 s_input = input("Введите текст (или нажмите Enter): ")
 
-# remove character_map  symbols
-s_input.translate(character_map)
-
-# remove unnesesery spaces
-s_input.strip()
-
-# remove punctuation symbols
-s_input.translate(string.punctuation)
-
+text_preparation(s_input)
 
 if not s_input :
     s_input = pyperclip.paste()
+
+text_preparation(s_input)
 
 v_words = s_input.split()
 
 v_dimensions = []
 v_count = []
 
-
+#def find_mm_pcs (text)
 prev = ""
 for i in range(len(v_words)):
     current_element = v_words[i]
